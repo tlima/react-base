@@ -1,0 +1,12 @@
+# Logs
+logs
+*.log
+
+# Coverage directory
+test/coverage
+
+# Bundled assets
+build
+
+# Dependency directory
+node_modules

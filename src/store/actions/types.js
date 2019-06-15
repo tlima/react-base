@@ -1,0 +1,2 @@
+export const INCREASE_COUNTER = 'INCREASE_COUNTER';
+export const ERASE_COUNTER = 'ERASE_COUNTER';

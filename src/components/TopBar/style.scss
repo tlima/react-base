@@ -1,0 +1,14 @@
+.bar {
+  padding: 0.25em;
+  background-color: lightgray;
+}
+
+.link {
+  padding: 0.5em 1em;
+  color: black;
+  font-weight: 500;
+
+  :visited {
+    color: black;
+  }
+}
