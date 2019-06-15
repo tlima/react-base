@@ -2,9 +2,6 @@
 logs
 *.log
 
-# Coverage directory
-test/coverage
-
 # Bundled assets
 build
 
