@@ -1,9 +1,19 @@
 # Logs
 logs
 *.log
+npm-debug.log*
 
-# Bundled assets
+# Coverage
+coverage
+.nyc_output
+
+# Build
 build
+dist
 
-# Dependency directory
+# Dependencies
 node_modules
+.npm
+
+# VSCode
+.vscode

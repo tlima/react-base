@@ -57,7 +57,7 @@ module.exports = {
             outputPath: 'img',
           },
         }],
-      }
+      },
     ],
   },
   resolve: {
