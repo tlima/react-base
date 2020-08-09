@@ -9,15 +9,15 @@ import * as styles from './style';
 const Counter = ({ counters, zeroCount }) => (
   <div>
     <div>
-      <span css={styles.removeButton} onClick={() => zeroCount('home')}>❎ </span>
+      <span css={styles.removeButton} onClick={() => zeroCount('home')}>❎</span>
       Counter Home: {counters.home}
     </div>
     <div>
-      <span css={styles.removeButton} onClick={() => zeroCount('one')}>❎ </span>
+      <span css={styles.removeButton} onClick={() => zeroCount('one')}>❎</span>
       Counter One: {counters.one}
     </div>
     <div>
-      <span css={styles.removeButton} onClick={() => zeroCount('two')}>❎ </span>
+      <span css={styles.removeButton} onClick={() => zeroCount('two')}>❎</span>
       Counter Two: {counters.two}
     </div>
   </div>
