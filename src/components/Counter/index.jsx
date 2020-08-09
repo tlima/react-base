@@ -28,12 +28,12 @@ Counter.propTypes = {
   zeroCount: PropTypes.func,
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   counters: state.counters,
 });
 
-const mapDispatchToProps = dispatch => ({
-  zeroCount: target => dispatch(eraseCountAction(target)),
+const mapDispatchToProps = (dispatch) => ({
+  zeroCount: (target) => dispatch(eraseCountAction(target)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Counter);

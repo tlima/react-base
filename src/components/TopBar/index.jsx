@@ -19,8 +19,8 @@ TopBar.propTypes = {
   upCount: PropTypes.func,
 };
 
-const mapDispatchToProps = dispatch => ({
-  upCount: target => dispatch(increaseCountAction(target)),
+const mapDispatchToProps = (dispatch) => ({
+  upCount: (target) => dispatch(increaseCountAction(target)),
 });
 
 export default connect(null, mapDispatchToProps)(TopBar);

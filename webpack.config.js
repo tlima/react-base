@@ -1,6 +1,4 @@
-/* eslint-disable global-require */
 const path = require('path'); // eslint-disable-line import/no-extraneous-dependencies
-const sass = require('sass');
 const webpack = require('webpack');
 
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
@@ -27,7 +25,7 @@ module.exports = {
         use: 'babel-loader',
       },
       {
-        test: /\.scss$/,
+        test: /\.css$/,
         use: [
           isDevelopment ? 'style-loader' : MiniCssExtractPlugin.loader,
           {
@@ -36,14 +34,6 @@ module.exports = {
               modules: true,
               localIdentName: '[local]_[hash:base64:6]',
               sourceMap: isDevelopment,
-            },
-          },
-          {
-            loader: 'sass-loader',
-            options: {
-              sourceMap: isDevelopment,
-              implementation: sass,
-              fiber: process.arch === 'arm' ? null : require('fibers'), // fibers won't compile on arm
             },
           },
         ],
@@ -67,12 +57,14 @@ module.exports = {
       pages: path.resolve(__dirname, 'src/pages'),
       store: path.resolve(__dirname, 'src/store'),
     },
-    extensions: ['*', '.js', '.jsx', '.scss'],
+    extensions: ['.js', '.jsx', '.css', '.json'],
+    symlinks: false,
   },
   devServer: {
     contentBase: './build',
     hot: true,
     historyApiFallback: true,
+    compress: true,
   },
   devtool: isDevelopment ? 'source-map' : false,
   optimization: {
