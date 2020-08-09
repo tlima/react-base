@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import styles from './style.scss';
+import * as styles from './style';
 
 const Layout = ({ children }) => (
-  <div className={styles.layout}>
+  <div css={styles.layout}>
     {children}
   </div>
 );

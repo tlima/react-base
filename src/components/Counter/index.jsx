@@ -4,20 +4,20 @@ import { connect } from 'react-redux';
 
 import { eraseCountAction } from 'store/actions/counters';
 
-import styles from './style.scss';
+import * as styles from './style';
 
 const Counter = ({ counters, zeroCount }) => (
   <div>
     <div>
-      <span className={styles.removebutton} onClick={() => zeroCount('home')}>❎ </span>
+      <span css={styles.removeButton} onClick={() => zeroCount('home')}>❎ </span>
       Counter Home: {counters.home}
     </div>
     <div>
-      <span className={styles.removebutton} onClick={() => zeroCount('one')}>❎ </span>
+      <span css={styles.removeButton} onClick={() => zeroCount('one')}>❎ </span>
       Counter One: {counters.one}
     </div>
     <div>
-      <span className={styles.removebutton} onClick={() => zeroCount('two')}>❎ </span>
+      <span css={styles.removeButton} onClick={() => zeroCount('two')}>❎ </span>
       Counter Two: {counters.two}
     </div>
   </div>

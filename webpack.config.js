@@ -3,10 +3,8 @@ const webpack = require('webpack');
 
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 const TerserJSPlugin = require('terser-webpack-plugin');
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 const isDevelopment = process.env.NODE_ENV !== 'production';
 
@@ -23,20 +21,6 @@ module.exports = {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: 'babel-loader',
-      },
-      {
-        test: /\.css$/,
-        use: [
-          isDevelopment ? 'style-loader' : MiniCssExtractPlugin.loader,
-          {
-            loader: 'css-loader',
-            options: {
-              modules: true,
-              localIdentName: '[local]_[hash:base64:6]',
-              sourceMap: isDevelopment,
-            },
-          },
-        ],
       },
       {
         test: /\.(png|jpe?g|gif|svg)$/,
@@ -68,7 +52,7 @@ module.exports = {
   },
   devtool: isDevelopment ? 'source-map' : false,
   optimization: {
-    minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})],
+    minimizer: [new TerserJSPlugin({})],
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -77,10 +61,6 @@ module.exports = {
     }),
     new CleanWebpackPlugin(),
     new webpack.HotModuleReplacementPlugin(),
-    new MiniCssExtractPlugin({
-      filename: isDevelopment ? '[name].css' : '[name].[hash].css',
-      chunkFilename: isDevelopment ? '[id].css' : '[id].[hash].css',
-    }),
     new CompressionPlugin(),
   ],
 };

@@ -3,7 +3,7 @@ This project is boilerplate code intended to be used as a base for modern lightw
 
 ### Tech
 This project uses:
-- react / react-router-dom as the component based interface building library
+- react / redux / styled-components as the component based interface building library
 - webpack for jsx parsing, minification, compression and bundling with cache busting via filename hashing
 - eslint based on airnbn rules to enforce good coding practices
 
@@ -35,7 +35,9 @@ $ npm run serve
 If you wish to contribute, you are welcome to open issues and PRs on the github project.
 
 ### Todos
-- fix & improve eslint config
+- add stylelint
+- add redux-saga
+- add jest
 
 ### Credits
 - Author: Thiago L. Lima

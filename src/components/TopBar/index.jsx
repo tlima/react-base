@@ -1,17 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 
 import { increaseCountAction } from 'store/actions/counters';
 
-import styles from './style.scss';
+import * as styles from './style';
+
+const { StyledLink } = styles;
 
 const TopBar = ({ upCount }) => (
-  <div className={styles.bar}>
-    <Link to="/" className={styles.link} onClick={() => upCount('home')}>Home</Link>
-    <Link to="/one" className={styles.link} onClick={() => upCount('one')}>Page one</Link>
-    <Link to="/two" className={styles.link} onClick={() => upCount('two')}>Page two</Link>
+  <div css={styles.bar}>
+    <StyledLink to="/" class="link" onClick={() => upCount('home')}>Home</StyledLink>
+    <StyledLink to="/one" class="link" onClick={() => upCount('one')}>Page one</StyledLink>
+    <StyledLink to="/two" class="link" onClick={() => upCount('two')}>Page two</StyledLink>
   </div>
 );
 
