@@ -9,7 +9,7 @@
     "build:nocheck": "NODE_ENV=production webpack --config webpack.config.js --mode production",
     "serve": "http-server ./build -g",
     "clean": "rm -rf node_modules",
-    "lint": "eslint \"**/*.js[x]\""
+    "lint": "eslint --ext .jsx,.js ./"
   },
   "repository": {
     "type": "git",
