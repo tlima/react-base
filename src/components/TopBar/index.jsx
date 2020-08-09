@@ -10,9 +10,9 @@ const { StyledLink } = styles;
 
 const TopBar = ({ upCount }) => (
   <div css={styles.bar}>
-    <StyledLink to="/" class="link" onClick={() => upCount('home')}>Home</StyledLink>
-    <StyledLink to="/one" class="link" onClick={() => upCount('one')}>Page one</StyledLink>
-    <StyledLink to="/two" class="link" onClick={() => upCount('two')}>Page two</StyledLink>
+    <StyledLink to="/" onClick={() => upCount('home')}>Home</StyledLink>
+    <StyledLink to="/one" onClick={() => upCount('one')}>Page one</StyledLink>
+    <StyledLink to="/two" onClick={() => upCount('two')}>Page two</StyledLink>
   </div>
 );
 

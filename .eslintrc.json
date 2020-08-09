@@ -12,7 +12,8 @@
     "jest": true
   },
   "globals": {
-    "__webpack_hash__": "readonly"
+    "__webpack_hash__": "readonly",
+    "_IS_DEVELOPMENT_": "readonly"
   },
   "parserOptions": {
     "sourceType": "module",

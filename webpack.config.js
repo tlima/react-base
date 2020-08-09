@@ -7,7 +7,7 @@ const CompressionPlugin = require('compression-webpack-plugin');
 const TerserJSPlugin = require('terser-webpack-plugin');
 const StylelintPlugin = require('stylelint-webpack-plugin');
 
-const isDevelopment = process.env.NODE_ENV !== 'production';
+const _IS_DEVELOPMENT_ = process.env.NODE_ENV !== 'production'; // eslint-disable-line no-underscore-dangle
 
 
 const config = {
@@ -50,7 +50,7 @@ const config = {
     symlinks: false,
   },
 
-  devtool: isDevelopment ? 'source-map' : false,
+  devtool: _IS_DEVELOPMENT_ ? 'source-map' : false,
 
   optimization: {
     minimizer: [new TerserJSPlugin({})],
@@ -60,14 +60,16 @@ const config = {
     new HtmlWebpackPlugin({
       title: 'react-base',
       meta: { description: 'React boilerplate for modern web projects.' },
+      favicon: path.resolve(__dirname, 'src/assets/favicon.ico'),
     }),
     new CleanWebpackPlugin(),
     new CompressionPlugin(),
+    new webpack.DefinePlugin({ _IS_DEVELOPMENT_ }),
   ],
 };
 
 
-if (isDevelopment) {
+if (_IS_DEVELOPMENT_) {
   config.module.rules.push({
     enforce: 'pre',
     test: /\.jsx?$/,

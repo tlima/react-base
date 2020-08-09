@@ -37,7 +37,7 @@ If you wish to contribute, you are welcome to open issues and PRs on the github 
 ### Todos
 - add redux-saga
 - add axios
-- add redux devtools
+- add redux persistence
 
 ### Credits
 - Author: Thiago L. Lima
