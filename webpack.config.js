@@ -11,10 +11,10 @@ const _IS_DEVELOPMENT_ = process.env.NODE_ENV !== 'production'; // eslint-disabl
 
 
 const config = {
-  entry: './src/index.jsx',
+  entry: path.join(__dirname, 'src', 'index.jsx'),
 
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.join(__dirname, 'dist'),
     filename: '[name].[hash].js',
     publicPath: '/',
   },
@@ -41,10 +41,10 @@ const config = {
 
   resolve: {
     alias: {
-      assets: path.resolve(__dirname, 'src/assets'),
-      components: path.resolve(__dirname, 'src/components'),
-      pages: path.resolve(__dirname, 'src/pages'),
-      store: path.resolve(__dirname, 'src/store'),
+      assets: path.join(__dirname, 'src', 'assets'),
+      components: path.join(__dirname, 'src', 'components'),
+      pages: path.join(__dirname, 'src', 'pages'),
+      store: path.join(__dirname, 'src', 'store'),
     },
     extensions: ['.js', '.jsx', '.json'],
     symlinks: false,
@@ -60,7 +60,7 @@ const config = {
     new HtmlWebpackPlugin({
       title: 'react-base',
       meta: { description: 'React boilerplate for modern web projects.' },
-      favicon: path.resolve(__dirname, 'src/assets/favicon.ico'),
+      favicon: path.join(__dirname, 'src', 'assets', 'favicon.ico'),
     }),
     new CleanWebpackPlugin(),
     new CompressionPlugin(),
@@ -76,7 +76,7 @@ if (_IS_DEVELOPMENT_) {
     exclude: /node_modules/,
     loader: 'eslint-loader',
     options: {
-      configFile: './.eslintrc.json',
+      configFile: '.eslintrc.json',
     },
   });
 
@@ -90,7 +90,7 @@ if (_IS_DEVELOPMENT_) {
   config.plugins.push(new webpack.HotModuleReplacementPlugin());
 
   config.plugins.push(new StylelintPlugin({
-    configFile: './.stylelintrc.json',
+    configFile: '.stylelintrc.json',
     files: '**/*.js',
   }));
 }
