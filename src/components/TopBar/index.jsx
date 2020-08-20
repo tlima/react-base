@@ -13,6 +13,7 @@ const TopBar = ({ upCount }) => (
     <StyledLink to="/" onClick={() => upCount('home')}>Home</StyledLink>
     <StyledLink to="/one" onClick={() => upCount('one')}>Page one</StyledLink>
     <StyledLink to="/two" onClick={() => upCount('two')}>Page two</StyledLink>
+    <StyledLink to="/three" onClick={() => upCount('three')}>Page three</StyledLink>
   </div>
 );
 

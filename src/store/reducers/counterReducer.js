@@ -1,11 +1,12 @@
 import { INCREASE_COUNTER, ERASE_COUNTER } from 'store/actions/types';
 
-const counters = ['home', 'one', 'two'];
+const counters = ['home', 'one', 'two', 'three'];
 
 const initialState = {
   home: 0,
   one: 0,
   two: 0,
+  three: 0,
 };
 
 const counterReducer = (state = initialState, action) => {

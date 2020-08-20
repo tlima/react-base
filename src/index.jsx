@@ -8,6 +8,7 @@ import appStore from 'store';
 import Home from 'pages/Home';
 import One from 'pages/One';
 import Two from 'pages/Two';
+import Three from 'pages/Three';
 import TopBar from 'components/TopBar';
 import Layout from 'components/Layout';
 
@@ -20,6 +21,7 @@ const ReactBase = () => (
           <Route exact path="/" component={Home} />
           <Route path="/one" component={One} />
           <Route path="/two" component={Two} />
+          <Route path="/three" component={Three} />
         </Switch>
       </Layout>
     </BrowserRouter>

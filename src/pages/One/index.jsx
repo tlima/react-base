@@ -4,8 +4,8 @@ import data from './data.json';
 
 const One = () => (
   <div>
-    <div>Page one</div>
-    <div>{data.title} - {data.info}</div>
+    <div>{data.title}</div>
+    <div>{data.info}</div>
   </div>
 );
 

@@ -44,6 +44,7 @@ const config = {
     alias: {
       assets: path.join(__dirname, 'src', 'assets'),
       components: path.join(__dirname, 'src', 'components'),
+      lib: path.join(__dirname, 'src', 'lib'),
       pages: path.join(__dirname, 'src', 'pages'),
       store: path.join(__dirname, 'src', 'store'),
     },
