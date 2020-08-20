@@ -28,6 +28,7 @@ const config = {
       },
       {
         test: /\.(png|jpe?g|gif|svg)$/,
+        include: path.join(__dirname, 'src', 'assets'),
         use: [{
           loader: 'file-loader',
           options: {
@@ -51,10 +52,6 @@ const config = {
   },
 
   devtool: _IS_DEVELOPMENT_ ? 'source-map' : false,
-
-  optimization: {
-    minimizer: [new TerserJSPlugin({})],
-  },
 
   plugins: [
     new HtmlWebpackPlugin({
@@ -93,6 +90,8 @@ if (_IS_DEVELOPMENT_) {
     configFile: '.stylelintrc.json',
     files: '**/*.js',
   }));
+} else {
+  config.optimization = { minimizer: [new TerserJSPlugin({})] };
 }
 
 

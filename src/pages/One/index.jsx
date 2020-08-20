@@ -1,5 +1,12 @@
 import React from 'react';
 
-const One = () => <div>Page one</div>;
+import data from './data.json';
+
+const One = () => (
+  <div>
+    <div>Page one</div>
+    <div>{data.title} - {data.info}</div>
+  </div>
+);
 
 export default One;
