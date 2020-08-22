@@ -12,16 +12,16 @@ const initialState = {
 const counterReducer = (state = initialState, action) => {
   switch (action.type) {
     case INCREASE_COUNTER:
-      if (counters.includes(action.target)) {
+      if (counters.includes(action.payload)) {
         const newState = { ...state };
-        newState[action.target]++;
+        newState[action.payload]++;
         return newState;
       }
       return state;
     case ERASE_COUNTER:
-      if (counters.includes(action.target)) {
+      if (counters.includes(action.payload)) {
         const newState = { ...state };
-        newState[action.target] = 0;
+        newState[action.payload] = 0;
         return newState;
       }
       return state;
