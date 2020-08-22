@@ -10,6 +10,17 @@ const request = (url, method, options = {}, data = null) => fetch(
   },
 );
 
+const buildResponse = async (requestResult) => {
+  const response = {
+    status: requestResult.status,
+    headers: requestResult.headers,
+    data: await requestResult.json(),
+  };
+
+  if (response.status < 200 || response.status > 299) throw response;
+  return response;
+};
+
 const requestWithRetry = async (url, method, options = {}, data = null) => {
   const finalOptions = { retries: REQUEST_DEFAULT_RETRIES, ...options };
   const result = await request(url, method, options, data);
@@ -17,10 +28,10 @@ const requestWithRetry = async (url, method, options = {}, data = null) => {
   if (result.status === 504 && finalOptions.retries > 0) {
     return requestWithRetry(url, method, { ...options, retries: finalOptions.retries - 1 }, data);
   }
-  return result;
+
+  return buildResponse(result);
 };
 
-export default {
-  get: (url, options) => requestWithRetry(url, 'GET', options),
-  post: (url, data, options) => requestWithRetry(url, 'POST', options, data),
-};
+export const get = (url, options) => requestWithRetry(url, 'GET', options);
+
+export const post = (url, data, options) => requestWithRetry(url, 'POST', options, data);

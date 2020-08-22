@@ -4,4 +4,4 @@ export const fetchTodoAction = (id = Math.round(Math.random() * 250)) => createA
 
 export const fetchTodoSuccessAction = (todo) => createAction(FETCH_TODO_SUCCESS, todo);
 
-export const fetchTodoErrorAction = (error) => createAction(FETCH_TODO_ERROR, error);
+export const fetchTodoErrorAction = (id) => createAction(FETCH_TODO_ERROR, id);

@@ -31,14 +31,10 @@ $ npm install -g http-server
 $ npm run serve
 ```
 
-### Contributing
-If you wish to contribute, you are welcome to open issues and PRs on the github project.
-
 ### Todos
-- add redux-saga
+- add redux logger
 - add redux persistence
-- review caching
-- add chunk splitting (vendor)
+- add webpack chunk splitting
 
 ### Credits
 - Author: Thiago L. Lima
