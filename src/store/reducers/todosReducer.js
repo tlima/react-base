@@ -1,7 +1,9 @@
 import { FETCH_TODO, FETCH_TODO_SUCCESS, FETCH_TODO_ERROR } from 'store/actions/types';
 
 const initialState = {
-  count: 0,
+  items: {},
+  loading: [],
+  failed: [],
 };
 
 const todosReducer = (state = initialState, action) => {
@@ -9,28 +11,23 @@ const todosReducer = (state = initialState, action) => {
     case FETCH_TODO:
       return {
         ...state,
-        [action.payload]: {
-          error: false,
-          hasLoaded: false,
-        },
+        loading: Array.from(new Set([...state.loading]).add(action.payload)),
       };
     case FETCH_TODO_SUCCESS:
       return {
         ...state,
-        count: state.count + 1,
-        [action.payload.id]: {
-          ...action.payload,
-          error: false,
-          hasLoaded: true,
+        items: {
+          ...state.items,
+          [action.payload.id]: action.payload,
         },
+        loading: Array.from(new Set([...state.loading]).delete(action.payload.id)),
+        failed: Array.from(new Set([...state.failed]).delete(action.payload.id)),
       };
     case FETCH_TODO_ERROR:
       return {
         ...state,
-        [action.payload]: {
-          error: true,
-          hasLoaded: true,
-        },
+        loading: Array.from(new Set([...state.loading]).delete(action.payload)),
+        failed: Array.from(new Set([...state.failed]).add(action.payload)),
       };
     default:
       return state;
