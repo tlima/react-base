@@ -3,9 +3,10 @@ This project is boilerplate code intended to be used as a base for modern lightw
 
 ### Tech
 This project uses:
-- react / redux / styled-components as the component based interface building library
-- webpack / babel for parsing, minification and bundling with cache busting via filename hashing
-- eslint based on airnbn rules and stylelint to enforce good coding practices
+- `react` + `styled-components` for building a component-based interface
+- `redux` + `redux-saga` for managing state and side effects
+- `webpack` + `babel` for transpiling, minificating and bundling, set up with cache busting via filename hashing
+- `eslint` + `stylelint` to enforce good coding practices and avoiding simple errors - based on airbnb configs
 
 ### Installation
 Install the dependencies and devDependencies.
