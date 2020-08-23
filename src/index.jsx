@@ -5,12 +5,11 @@ import { Provider } from 'react-redux';
 
 import appStore from 'store';
 
-import Home from 'pages/Home';
-import One from 'pages/One';
-import Two from 'pages/Two';
-import Three from 'pages/Three';
 import TopBar from 'components/TopBar';
 import Layout from 'components/Layout';
+import Home from 'pages/Home';
+import Files from 'pages/Files';
+import Async from 'pages/Async';
 
 const ReactBase = () => (
   <Provider store={appStore}>
@@ -19,9 +18,8 @@ const ReactBase = () => (
         <TopBar />
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route path="/one" component={One} />
-          <Route path="/two" component={Two} />
-          <Route path="/three" component={Three} />
+          <Route path="/files" component={Files} />
+          <Route path="/async" component={Async} />
         </Switch>
       </Layout>
     </BrowserRouter>

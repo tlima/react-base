@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { fetchTodoAction } from 'store/actions/todos';
 import { getItems, getLoadingItems, getFailedItems } from 'store/selectors/todosSelector';
 
-const Three = () => {
+const Async = () => {
   const loadedItems = useSelector(getItems);
   const loadingItems = useSelector(getLoadingItems);
   const failedItems = useSelector(getFailedItems);
@@ -45,4 +45,4 @@ const Three = () => {
   );
 };
 
-export default Three;
+export default Async;

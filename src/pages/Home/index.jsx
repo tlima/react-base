@@ -5,7 +5,7 @@ import Counter from 'components/Counter';
 
 const Home = () => (
   <div>
-    <div>Landing page{_IS_DEVELOPMENT_ && `- Build ${__webpack_hash__}`}</div>
+    <div>Landing page{_IS_DEVELOPMENT_ && ` - build #${__webpack_hash__}`}</div>
     <Counter />
   </div>
 );

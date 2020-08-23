@@ -1,28 +1,24 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import { increaseCountAction } from 'store/actions/counters';
+import { pageCounterKeys } from 'components/Counter';
 
 import * as styles from './style';
 
 const { StyledLink } = styles;
 
-const TopBar = ({ upCount }) => (
-  <div css={styles.bar}>
-    <StyledLink to="/" onClick={() => upCount('home')}>Home</StyledLink>
-    <StyledLink to="/one" onClick={() => upCount('one')}>Page one</StyledLink>
-    <StyledLink to="/two" onClick={() => upCount('two')}>Page two</StyledLink>
-    <StyledLink to="/three" onClick={() => upCount('three')}>Page three</StyledLink>
-  </div>
-);
+const TopBar = () => {
+  const dispatch = useDispatch();
+  const upCount = (target) => dispatch(increaseCountAction(target));
 
-TopBar.propTypes = {
-  upCount: PropTypes.func,
+  return (
+    <div css={styles.bar}>
+      <StyledLink to="/" onClick={() => upCount(pageCounterKeys.HOME_COUNTER)}>Home</StyledLink>
+      <StyledLink to="/files" onClick={() => upCount(pageCounterKeys.FILES_COUNTER)}>Files</StyledLink>
+      <StyledLink to="/async" onClick={() => upCount(pageCounterKeys.ASYNC_COUNTER)}>Async</StyledLink>
+    </div>
+  );
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  upCount: (target) => dispatch(increaseCountAction(target)),
-});
-
-export default connect(null, mapDispatchToProps)(TopBar);
+export default TopBar;

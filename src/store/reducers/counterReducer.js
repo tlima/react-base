@@ -1,30 +1,24 @@
 import { INCREASE_COUNTER, ERASE_COUNTER } from 'store/actions/types';
-
-const counters = ['home', 'one', 'two', 'three'];
+import { pageCounterKeys } from 'components/Counter';
 
 const initialState = {
-  home: 0,
-  one: 0,
-  two: 0,
-  three: 0,
+  [pageCounterKeys.HOME_COUNTER]: 0,
+  [pageCounterKeys.FILES_COUNTER]: 0,
+  [pageCounterKeys.ASYNC_COUNTER]: 0,
 };
 
 const counterReducer = (state = initialState, action) => {
   switch (action.type) {
     case INCREASE_COUNTER:
-      if (counters.includes(action.payload)) {
-        const newState = { ...state };
-        newState[action.payload]++;
-        return newState;
-      }
-      return state;
+      return {
+        ...state,
+        [action.payload]: state[action.payload] + 1,
+      };
     case ERASE_COUNTER:
-      if (counters.includes(action.payload)) {
-        const newState = { ...state };
-        newState[action.payload] = 0;
-        return newState;
-      }
-      return state;
+      return {
+        ...state,
+        [action.payload]: initialState[action.payload],
+      };
     default:
       return state;
   }

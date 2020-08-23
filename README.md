@@ -35,6 +35,7 @@ $ npm run serve
 - add redux logger
 - add redux persistence
 - add webpack chunk splitting
+- improve description
 
 ### Credits
 - Author: Thiago L. Lima
