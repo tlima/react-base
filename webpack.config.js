@@ -4,7 +4,6 @@ const webpack = require('webpack');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
-const TerserJSPlugin = require('terser-webpack-plugin');
 const StylelintPlugin = require('stylelint-webpack-plugin');
 
 const packageInfo = require('./package.json');
@@ -17,7 +16,7 @@ const config = {
 
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: '[name].[hash].js',
+    filename: '[name].[contenthash].js',
     publicPath: '/',
   },
 
@@ -34,7 +33,7 @@ const config = {
         use: [{
           loader: 'file-loader',
           options: {
-            name: '[hash:base64:8].[ext]',
+            name: '[contenthash:8].[ext]',
             outputPath: 'img',
           },
         }],
@@ -71,6 +70,13 @@ const config = {
     new CompressionPlugin(),
     new webpack.DefinePlugin({ _IS_DEVELOPMENT_ }),
   ],
+
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+      name: 'vendors',
+    },
+  },
 };
 
 
@@ -100,8 +106,6 @@ if (_IS_DEVELOPMENT_) {
     configFile: '.stylelintrc.json',
     files: '**/*.js',
   }));
-} else {
-  config.optimization = { minimizer: [new TerserJSPlugin({})] };
 }
 
 

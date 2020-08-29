@@ -12,7 +12,7 @@ This project uses:
 Install the dependencies and devDependencies.
 ```sh
 $ cd react-base
-$ npm install
+$ npm ci
 ```
 
 ### Development
@@ -26,14 +26,13 @@ To generate assets for a production server:
 ```sh
 $ npm run build
 ```
-Then check the **build** folder for them. You can also serve them locally using **http-server** for testing purposes:
+Then check the **dist** folder for them. You can also serve them locally using **http-server** for testing purposes:
 ```sh
 $ npm install -g http-server
 $ npm run serve
 ```
 
 ### Todos
-- add webpack chunk splitting
 - improve description
 
 ### Credits
