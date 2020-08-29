@@ -33,8 +33,6 @@ $ npm run serve
 ```
 
 ### Todos
-- add redux logger
-- add redux persistence
 - add webpack chunk splitting
 - improve description
 

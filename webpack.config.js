@@ -1,4 +1,4 @@
-const path = require('path'); // eslint-disable-line import/no-extraneous-dependencies
+const path = require('path');
 const webpack = require('webpack');
 
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
@@ -6,6 +6,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 const TerserJSPlugin = require('terser-webpack-plugin');
 const StylelintPlugin = require('stylelint-webpack-plugin');
+
+const packageInfo = require('./package.json');
 
 const _IS_DEVELOPMENT_ = process.env.NODE_ENV !== 'production'; // eslint-disable-line no-underscore-dangle
 
@@ -52,12 +54,17 @@ const config = {
     symlinks: false,
   },
 
-  devtool: _IS_DEVELOPMENT_ ? 'source-map' : false,
-
   plugins: [
     new HtmlWebpackPlugin({
       title: 'react-base',
-      meta: { description: 'React boilerplate for modern web projects.' },
+      meta: {
+        description: packageInfo.description,
+        author: packageInfo.author,
+        keywords: packageInfo.keywords.join(', '),
+        noCache1: { 'http-equiv': 'Cache-Control', content: 'no-cache' },
+        noCache2: { 'http-equiv': 'Pragma', content: 'no-cache' },
+        noCache3: { 'http-equiv': 'Expires', content: '0' },
+      },
       favicon: path.join(__dirname, 'src', 'assets', 'favicon.ico'),
     }),
     new CleanWebpackPlugin(),
@@ -84,6 +91,8 @@ if (_IS_DEVELOPMENT_) {
     historyApiFallback: true,
     compress: true,
   };
+
+  config.devtool = 'eval-source-map';
 
   config.plugins.push(new webpack.HotModuleReplacementPlugin());
 
