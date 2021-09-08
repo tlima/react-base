@@ -10,7 +10,7 @@ const { StyledLink } = styles;
 
 const TopBar = () => {
   const dispatch = useDispatch();
-  const upCount = (target) => dispatch(increaseCountAction(target));
+  const upCount = target => dispatch(increaseCountAction(target));
 
   return (
     <div css={styles.bar}>

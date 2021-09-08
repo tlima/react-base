@@ -1,9 +1,9 @@
 import { all } from 'redux-saga/effects';
 
-import todosSaga from 'store/sagas/todosSaga';
+import colorsSaga from 'store/sagas/colorsSaga';
 
 export default function* rootSaga() {
   yield all([
-    todosSaga(),
+    colorsSaga(),
   ]);
 }

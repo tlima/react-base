@@ -14,7 +14,7 @@ export const pageCounterKeys = {
 
 const Counter = () => {
   const dispatch = useDispatch();
-  const zeroCount = (target) => dispatch(eraseCountAction(target));
+  const zeroCount = target => dispatch(eraseCountAction(target));
 
   const homePageCounter = useSelector(getCounter(pageCounterKeys.HOME_COUNTER));
   const filePageCounter = useSelector(getCounter(pageCounterKeys.FILES_COUNTER));

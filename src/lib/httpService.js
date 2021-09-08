@@ -10,7 +10,7 @@ const request = (url, method, options = {}, data = null) => fetch(
   },
 );
 
-const buildResponse = async (requestResult) => {
+const buildResponse = async requestResult => {
   const response = {
     status: requestResult.status,
     headers: requestResult.headers,

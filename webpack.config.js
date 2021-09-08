@@ -16,7 +16,7 @@ const config = {
 
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: '[name].[contenthash].js',
+    filename: '[name].[hash].js',
     publicPath: '/',
   },
 
@@ -33,7 +33,7 @@ const config = {
         use: [{
           loader: 'file-loader',
           options: {
-            name: '[contenthash:8].[ext]',
+            name: '[hash:8].[ext]',
             outputPath: 'img',
           },
         }],

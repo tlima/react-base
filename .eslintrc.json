@@ -36,6 +36,8 @@
     "react/jsx-one-expression-per-line": 0,
     "no-plusplus": 0,
     "jsx-quotes": 0,
-    "import/prefer-default-export": ["off"]
+    "import/prefer-default-export": ["off"],
+    "arrow-parens": ["error", "as-needed"],
+    "no-bitwise": ["error", { "allow": ["~"] }]
   }
 }
