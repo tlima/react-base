@@ -1,5 +1,5 @@
 # react-base
-This project is boilerplate code intended to be used as a base for modern lightweight web projects based on the React library. It includes a basic working structure as a starting point and it's highly recommended adding Jest support and setting Babel browser targets.
+This project is boilerplate code intended to be used as a base for simple web projects based on React. It includes a working structure and opinionated settings as a starting point. It's highly recommended exploring the available settings and configuring Babel browser targets.
 
 ### Tech
 This project uses:
@@ -31,9 +31,6 @@ Then check the **dist** folder for them. You can also serve them locally using *
 $ npm install -g http-server
 $ npm run serve
 ```
-
-### Todos
-- improve description
 
 ### Credits
 - Author: Thiago L. Lima

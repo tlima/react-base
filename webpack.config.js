@@ -6,6 +6,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 const TerserJSPlugin = require('terser-webpack-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const ESLintPlugin = require('eslint-webpack-plugin');
 const StylelintPlugin = require('stylelint-webpack-plugin');
 
 const packageInfo = require('./package.json');
@@ -91,16 +92,6 @@ const config = {
 
 
 if (_IS_DEVELOPMENT_) {
-  config.module.rules.push({
-    enforce: 'pre',
-    test: /\.jsx?$/,
-    exclude: /node_modules/,
-    loader: 'eslint-loader',
-    options: {
-      configFile: '.eslintrc.json',
-    },
-  });
-
   config.devServer = {
     static: {
       directory: './dist',
@@ -112,6 +103,7 @@ if (_IS_DEVELOPMENT_) {
 
   config.devtool = 'eval-source-map';
 
+  config.plugins.push(new ESLintPlugin({ extensions: ['.js', '.jsx'] }));
   config.plugins.push(new webpack.HotModuleReplacementPlugin());
 
   config.plugins.push(new StylelintPlugin({
