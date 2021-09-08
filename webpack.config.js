@@ -4,6 +4,8 @@ const webpack = require('webpack');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
+const TerserJSPlugin = require('terser-webpack-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const StylelintPlugin = require('stylelint-webpack-plugin');
 
 const packageInfo = require('./package.json');
@@ -12,11 +14,13 @@ const _IS_DEVELOPMENT_ = process.env.NODE_ENV !== 'production'; // eslint-disabl
 
 
 const config = {
+  mode: _IS_DEVELOPMENT_ ? 'development' : 'production',
+
   entry: path.join(__dirname, 'src', 'index.jsx'),
 
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: '[name].[hash].js',
+    filename: '[name].[fullhash].js',
     publicPath: '/',
   },
 
@@ -33,7 +37,7 @@ const config = {
         use: [{
           loader: 'file-loader',
           options: {
-            name: '[hash:8].[ext]',
+            name: '[fullhash:base64:8].[ext]',
             outputPath: 'img',
           },
         }],
@@ -53,6 +57,19 @@ const config = {
     symlinks: false,
   },
 
+  devtool: _IS_DEVELOPMENT_ ? 'source-map' : false,
+
+  optimization: {
+    minimizer: [
+      new TerserJSPlugin({}),
+      new CssMinimizerPlugin(),
+    ],
+    splitChunks: {
+      chunks: 'all',
+      name: 'vendors',
+    },
+  },
+
   plugins: [
     new HtmlWebpackPlugin({
       title: 'react-base',
@@ -70,13 +87,6 @@ const config = {
     new CompressionPlugin(),
     new webpack.DefinePlugin({ _IS_DEVELOPMENT_ }),
   ],
-
-  optimization: {
-    splitChunks: {
-      chunks: 'all',
-      name: 'vendors',
-    },
-  },
 };
 
 
@@ -92,7 +102,9 @@ if (_IS_DEVELOPMENT_) {
   });
 
   config.devServer = {
-    contentBase: './dist',
+    static: {
+      directory: './dist',
+    },
     hot: true,
     historyApiFallback: true,
     compress: true,
