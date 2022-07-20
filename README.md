@@ -1,5 +1,6 @@
 # react-base
-This project is boilerplate code intended to be used as a base for simple web projects based on React. It includes a working structure and opinionated settings as a starting point. It's highly recommended exploring the available settings and configuring Babel browser targets.
+This was a practice project used to learn and explore configurations for multiple tools from the ground up, the main one being webpack.
+Centered around boilerplate code, it could be used as a base for simple web projects based on React. It includes a working structure and opinionated settings as a starting point.
 
 ### Tech
 This project uses:
